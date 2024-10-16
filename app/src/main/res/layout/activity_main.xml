@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/timerText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Time Left: 60"
+        android:textSize="24sp"
+        android:layout_alignParentTop="true"/>
+
+    <TextView
+        android:id="@+id/appleCounter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Apples Eaten: 0"
+        android:textSize="24sp"
+        android:layout_below="@id/timerText"/>
+
+    <Button
+        android:id="@+id/startButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Start Game"
+        android:layout_below="@id/appleCounter"/>
+
+    <Button
+        android:id="@+id/treeButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Click the Tree!"
+        android:layout_below="@id/startButton"/>
+
+    <Button
+        android:id="@+id/catButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Click the Cat!"
+        android:layout_below="@id/treeButton"/>
+
+    <TextView
+        android:id="@+id/resultText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:textSize="24sp"
+        android:layout_below="@id/catButton"/>
+
+</RelativeLayout>
