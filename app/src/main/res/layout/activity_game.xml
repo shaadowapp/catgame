@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@mipmap/ic_launcher_background">
+    android:background="@drawable/game_background">
 
     <TextView
         android:id="@+id/timerText"
@@ -26,51 +26,47 @@
 
     <ImageView
         android:id="@+id/treeImage"
-        android:layout_width="650dp"
-        android:layout_height="600dp"
+        android:layout_width="520dp"
+        android:layout_height="650dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="0dp"
-        android:layout_marginBottom="22dp"
-        android:contentDescription="@string/tree_image"
+        android:layout_marginStart="-174dp"
+        android:layout_marginBottom="8dp"
         android:src="@drawable/tree"
-        android:translationX="-90dp"
-        android:translationY="48dp" />
+        android:text="@string/click_the_tree" />
 
     <ImageView
         android:id="@+id/catImage"
-        android:layout_width="162dp"
-        android:layout_height="149dp"
+        android:layout_width="140dp"
+        android:layout_height="140dp"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="5dp"
-        android:layout_marginBottom="23dp"
-        android:contentDescription="@string/cat_image"
+        android:layout_marginEnd="21dp"
+        android:layout_marginBottom="45dp"
         android:src="@drawable/cat"
-        android:translationX="5dp"
-        android:translationY="-20dp" />
+        android:text="@string/click_the_cat" />
 
     <TextView
         android:id="@+id/resultText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@id/catImage"
         android:text=""
-        android:textSize="24sp"
-        android:layout_below="@id/catImage"/>
+        android:textSize="24sp" />
 
 
     <Button
         android:id="@+id/backToHomeButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/back_to_home"
-        android:visibility="gone"/> <!-- Initially hidden -->
+        android:text="Back to Home"
+        android:visibility="gone" /> <!-- Initially hidden -->
 
     <Button
         android:id="@+id/restartGameButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/restart_game"
-        android:visibility="gone"/> <!-- Initially hidden -->
+        android:text="Restart Game"
+        android:visibility="gone" /> <!-- Initially hidden -->
 
 </RelativeLayout>

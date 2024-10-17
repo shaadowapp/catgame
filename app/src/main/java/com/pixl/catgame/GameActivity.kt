@@ -44,8 +44,8 @@ class GameActivity : AppCompatActivity() {
             catImage.setOnClickListener {
                 if (gameStarted && appleVisible) {
                     appleCount++
-                    appleCounter.text = "Apples Eaten: $appleCount/100"
-                    if (appleCount >= 100) {
+                    appleCounter.text = "Apples Eaten: $appleCount/120"
+                    if (appleCount >= 120) {
                         resultText.text = "Congratulations! You ate $appleCount apples!"
                         endGame()
                     }
@@ -63,7 +63,7 @@ class GameActivity : AppCompatActivity() {
     private fun startGame() {
         gameStarted = true
         appleCount = 0
-        appleCounter.text = "Apples Eaten: 0/100"
+        appleCounter.text = "Apples Eaten: 0/120"
         resultText.text = ""
         timeLeftInMillis = 60000 // Reset to 1 minute
         startTimer()

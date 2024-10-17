@@ -1,11 +1,12 @@
 <resources>
     <string name="app_name">C.A.T Game</string>
     <string name="time_left_60">Time Left: 60</string>
-    <string name="apples_eaten_0">Apples Eaten: 0</string>
+    <string name="apples_eaten_0">Apples Eaten: 0/120</string>
     <string name="start_game">Start Game</string>
     <string name="click_the_cat">Click the Cat!</string>
     <string name="tree_image">Tree Image</string>
     <string name="cat_image">Cat Image</string>
     <string name="back_to_home">Back to Home</string>
     <string name="restart_game">Restart Game</string>
+    <string name="click_the_tree">Click the Tree!</string>
 </resources>
