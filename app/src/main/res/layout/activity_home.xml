@@ -25,7 +25,7 @@
             android:contentDescription="Settings Icon"
             android:src="@android:drawable/ic_menu_manage"
             android:translationX="265dp"
-            android:translationY="10dp" />
+            android:translationY="18dp" />
 
     </LinearLayout>
 
@@ -36,6 +36,5 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:text="Start Game"
-        android:textSize="20sp" />
+        android:text="Start Game" />
 </RelativeLayout>
