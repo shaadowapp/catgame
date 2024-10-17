@@ -23,7 +23,7 @@
         <!-- Home Activity -->
         <activity android:name=".HomeActivity" />
 
-        <!-- Game Activity (Now the main game screen) -->
+        <!-- Game Activity -->
         <activity android:name=".GameActivity" />
     </application>
 

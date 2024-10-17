@@ -2,39 +2,53 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp">
+    android:background="@mipmap/ic_launcher_background">
 
     <TextView
         android:id="@+id/timerText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Time Left: 60"
+        android:layout_alignParentTop="true"
+        android:text="@string/time_left_60"
         android:textSize="24sp"
-        android:layout_alignParentTop="true"/>
+        android:translationX="20dp"
+        android:translationY="20dp" />
 
     <TextView
         android:id="@+id/appleCounter"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Apples Eaten: 0"
+        android:layout_below="@id/timerText"
+        android:text="@string/apples_eaten_0"
         android:textSize="24sp"
-        android:layout_below="@id/timerText"/>
+        android:translationX="20dp"
+        android:translationY="30dp" />
 
-    <Button
-        android:id="@+id/treeButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/appleCounter"
-        android:layout_marginTop="22dp"
-        android:text="Click the Tree!" />
+    <ImageView
+        android:id="@+id/treeImage"
+        android:layout_width="650dp"
+        android:layout_height="600dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginBottom="22dp"
+        android:contentDescription="@string/tree_image"
+        android:src="@drawable/tree"
+        android:translationX="-90dp"
+        android:translationY="48dp" />
 
-    <Button
-        android:id="@+id/catButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/treeButton"
-        android:layout_marginTop="11dp"
-        android:text="Click the Cat!" />
+    <ImageView
+        android:id="@+id/catImage"
+        android:layout_width="162dp"
+        android:layout_height="149dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="23dp"
+        android:contentDescription="@string/cat_image"
+        android:src="@drawable/cat"
+        android:translationX="5dp"
+        android:translationY="-20dp" />
 
     <TextView
         android:id="@+id/resultText"
@@ -42,21 +56,21 @@
         android:layout_height="wrap_content"
         android:text=""
         android:textSize="24sp"
-        android:layout_below="@id/catButton"/>
+        android:layout_below="@id/catImage"/>
 
 
     <Button
         android:id="@+id/backToHomeButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Back to Home"
+        android:text="@string/back_to_home"
         android:visibility="gone"/> <!-- Initially hidden -->
 
     <Button
         android:id="@+id/restartGameButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Restart Game"
+        android:text="@string/restart_game"
         android:visibility="gone"/> <!-- Initially hidden -->
 
 </RelativeLayout>
