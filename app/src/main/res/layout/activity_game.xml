@@ -21,25 +21,20 @@
         android:layout_below="@id/timerText"/>
 
     <Button
-        android:id="@+id/startButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Start Game"
-        android:layout_below="@id/appleCounter"/>
-
-    <Button
         android:id="@+id/treeButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Click the Tree!"
-        android:layout_below="@id/startButton"/>
+        android:layout_below="@+id/appleCounter"
+        android:layout_marginTop="22dp"
+        android:text="Click the Tree!" />
 
     <Button
         android:id="@+id/catButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Click the Cat!"
-        android:layout_below="@id/treeButton"/>
+        android:layout_below="@id/treeButton"
+        android:layout_marginTop="11dp"
+        android:text="Click the Cat!" />
 
     <TextView
         android:id="@+id/resultText"
@@ -48,5 +43,20 @@
         android:text=""
         android:textSize="24sp"
         android:layout_below="@id/catButton"/>
+
+
+    <Button
+        android:id="@+id/backToHomeButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Back to Home"
+        android:visibility="gone"/> <!-- Initially hidden -->
+
+    <Button
+        android:id="@+id/restartGameButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Restart Game"
+        android:visibility="gone"/> <!-- Initially hidden -->
 
 </RelativeLayout>
