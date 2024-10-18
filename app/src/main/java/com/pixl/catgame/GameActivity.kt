@@ -1,17 +1,20 @@
 package com.pixl.catgame
 
+import android.app.AlertDialog
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.util.Log
-import androidx.appcompat.app.AppCompatActivity
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
+import org.json.JSONObject
+import java.io.InputStream
+import kotlin.random.Random
 
 class GameActivity : AppCompatActivity() {
 
     private lateinit var timerText: TextView
     private lateinit var appleCounter: TextView
-    private lateinit var resultText: TextView
     private lateinit var catImage: ImageView
     private lateinit var treeImage: ImageView
 
@@ -22,21 +25,22 @@ class GameActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         try {
             setContentView(R.layout.activity_game)
-
 
             // Initialize views
             timerText = findViewById(R.id.timerText)
             appleCounter = findViewById(R.id.appleCounter)
-            resultText = findViewById(R.id.resultText)
             catImage = findViewById(R.id.catImage)
             treeImage = findViewById(R.id.treeImage)
 
-            // Set onClick listeners for images
+            // Start the game logic
+            startGame()
+
             treeImage.setOnClickListener {
                 if (gameStarted) {
-                    appleVisible = true // Make the apple visible
+                    appleVisible = true
                     appleCounter.text = "Apple Dropped! Click the cat!"
                 }
             }
@@ -46,16 +50,14 @@ class GameActivity : AppCompatActivity() {
                     appleCount++
                     appleCounter.text = "Apples Eaten: $appleCount/120"
                     if (appleCount >= 120) {
-                        resultText.text = "Congratulations! You ate $appleCount apples!"
+                        showResult(true)  // Player won
                         endGame()
                     }
-                    appleVisible = false // Hide the apple after being eaten
+                    appleVisible = false
                 }
             }
 
-            // Start the game automatically when coming from home
-            startGame()
-        }catch (e: Exception) {
+        } catch (e: Exception) {
             Log.e("GameActivity", "Error initializing activity", e)
         }
     }
@@ -64,7 +66,6 @@ class GameActivity : AppCompatActivity() {
         gameStarted = true
         appleCount = 0
         appleCounter.text = "Apples Eaten: 0/120"
-        resultText.text = ""
         timeLeftInMillis = 60000 // Reset to 1 minute
         startTimer()
     }
@@ -78,23 +79,50 @@ class GameActivity : AppCompatActivity() {
 
             override fun onFinish() {
                 gameStarted = false
-                if (appleCount < 100) {
-                    resultText.text = "Oops! You only ate $appleCount apples!"
-                }
-                // Show back to home and restart buttons here
-                showResultButtons()
+                showResult(appleCount >= 120) // Check if won
+                endGame()
             }
         }.start()
     }
 
     private fun endGame() {
         gameStarted = false
-        // Show back to home and restart buttons here
-        showResultButtons()
     }
 
-    private fun showResultButtons() {
-        // Logic to show "Back to Home" and "Restart Game" buttons
-        // You can create buttons dynamically or make them visible here
+    private fun showResult(isWin: Boolean) {
+        val message = if (isWin) {
+            "Congratulations! You ate $appleCount apples!"
+        } else {
+            "Oops! You only ate $appleCount apples!"
+        }
+
+        // Load and display a random comment from JSON
+        val comment = if (isWin) {
+            getRandomCommentFromJson(R.raw.win_comments)
+        } else {
+            getRandomCommentFromJson(R.raw.lose_comments)
+        }
+
+        val dialogMessage = "$message\n\n$comment"
+
+        // Show result in a popup dialog
+        AlertDialog.Builder(this)
+            .setTitle(if (isWin) "You Win!" else "You Lose!")
+            .setMessage(dialogMessage)
+            .setPositiveButton("OK") { dialog, _ -> dialog.dismiss() }
+            .show()
+    }
+
+    private fun getRandomCommentFromJson(resourceId: Int): String {
+        val json = loadJsonFromResource(resourceId)
+        val jsonObject = JSONObject(json)
+        val comments = jsonObject.getJSONArray("comments")
+        val randomIndex = Random.nextInt(comments.length())
+        return comments.getString(randomIndex)
+    }
+
+    private fun loadJsonFromResource(resourceId: Int): String {
+        val inputStream: InputStream = resources.openRawResource(resourceId)
+        return inputStream.bufferedReader().use { it.readText() }
     }
 }
