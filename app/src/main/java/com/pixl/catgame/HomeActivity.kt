@@ -1,5 +1,6 @@
 package com.pixl.catgame
 
+import android.Manifest
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
@@ -7,6 +8,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.app.AlarmManager
 import android.app.PendingIntent
 import android.content.Context
+import android.content.pm.PackageManager
+import androidx.core.app.ActivityCompat
+import android.os.Build
 
 class HomeActivity : AppCompatActivity() {
 
@@ -22,8 +26,22 @@ class HomeActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        // Call the scheduleNotification function here to start notifications
-        scheduleNotification(this)  // <-- Ensures notification scheduling starts
+        // Check and request notification permission for Android 13 and above
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS)
+                != PackageManager.PERMISSION_GRANTED) {
+                // Request the permission
+                ActivityCompat.requestPermissions(
+                    this, arrayOf(Manifest.permission.POST_NOTIFICATIONS), 1
+                )
+            } else {
+                // Permission granted; schedule notifications
+                scheduleNotification(this)
+            }
+        } else {
+            // For devices below Android 13, directly schedule notifications
+            scheduleNotification(this)
+        }
     }
 
     // Schedules notifications to trigger periodically (e.g., every 2 hours)

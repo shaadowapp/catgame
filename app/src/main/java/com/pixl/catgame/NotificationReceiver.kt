@@ -7,6 +7,7 @@ import android.content.Intent
 class NotificationReceiver : BroadcastReceiver() {
     override fun onReceive(context: Context, intent: Intent) {
         val notificationHelper = NotificationHelper(context)
-        notificationHelper.sendRandomNotification()
+        notificationHelper.createNotificationChannel() // Ensure the channel is created
+        notificationHelper.showNotification()
     }
 }
